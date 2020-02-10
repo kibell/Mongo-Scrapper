@@ -5,9 +5,20 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const db = require("./models");
 const PORT = 3000;
-
+const path = require('path');
+const exphbs = require("express-handlebars");
 // Initialize Express
 const app = express();
+
+// View engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.engine("handlebars", exphbs({
+    defaultLayout: "main"
+}));
+app.set('view engine', 'handlebars');
+
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 //configure middleware
 // Use morgan logger for logging requests
@@ -21,29 +32,32 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", {
+mongoose.connect("mongodb://localhost/hiphopdb", {
     useNewUrlParser: true
 });
 
 
+// Homepage
+app.get('/', function (req, res, next) {
 
+    res.render('index', {
+    
+  
+    });
+  });
+  
+  
+ 
 
 axios.get("https://hiphopdx.com/").then(function (response) {
 
     const $ = cherrio.load(response.data)
-
     const results = [];
-
     $("h3.title").each(function (i, element) {
-
         const title = $(element).text()
         // console.log(title)
-
         results.push({
             title: title
-
-
-
         })
 
 
