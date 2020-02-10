@@ -7,9 +7,11 @@ const db = require("./models");
 const PORT = 3000;
 const path = require('path');
 const exphbs = require("express-handlebars");
+const router = require('./controller/hipHopController')
+
 // Initialize Express
 const app = express();
-
+app.use(router)
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine("handlebars", exphbs({
@@ -37,32 +39,12 @@ mongoose.connect("mongodb://localhost/hiphopdb", {
 });
 
 
-// Homepage
-app.get('/', function (req, res, next) {
 
-    res.render('index', {
-    
-  
-    });
-  });
   
   
  
 
-axios.get("https://hiphopdx.com/").then(function (response) {
 
-    const $ = cherrio.load(response.data)
-    const results = [];
-    $("h3.title").each(function (i, element) {
-        const title = $(element).text()
-        // console.log(title)
-        results.push({
-            title: title
-        })
-
-
-    })
-})
 
 
 // Start the server
