@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
   
          $("a.single").each(function (i, element) {
         
-         const results = [];
+        const results = [];
 
         const title = $(element).children("h3").text()
         const excerpt = $(element).children("p.excerpt").text()
@@ -42,7 +42,7 @@ router.get('/', function (req, res, next) {
                 excerpt: excerpt  
              })    
              
-         
+         console.log(results)
          db.Article.create(results)
          .then(function(dbArticle) {
            // View the added result in the console
