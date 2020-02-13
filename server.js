@@ -41,11 +41,18 @@ mongoose.connect("mongodb://localhost/hiphopdb", {
 
 
   
-  
+
+
+
+mongoose.connection
+    .once('open', () => console.log('MongoDB is Connected in server.js'))
+    .on('error', (error) => {
+        console.log("The Error is", error)
+    });
  
 
 
-
+  
 
 // Start the server
 app.listen(PORT, function () {
