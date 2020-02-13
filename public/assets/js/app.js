@@ -1,12 +1,12 @@
 // Grab the articles as a json
+Scrape()
+function Scrape () { 
+console.log("iiiii")
 $.getJSON("/articles", function(data) {
   // For each one
   
     // Display the apropos information on the page
-    // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].excerpt + "</p>");
-   
   
-    
       $("#articles").append(`<div class="mt-5 mb-5 Lobster text-center">
       <h1 style="font-size: 4em">Hip Hop Top Stories</h1>
       <div>`)
@@ -29,3 +29,4 @@ $.getJSON("/articles", function(data) {
      `)
       }
   })
+}
