@@ -38,6 +38,7 @@ mongoose.connect("mongodb://localhost/hiphopdb", {
     useNewUrlParser: true
 });
 
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/hiphopdb";
 
 
   
@@ -58,3 +59,18 @@ mongoose.connection
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
 });
+
+mongoose.set('useFindAndModify', false)
+
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+});
+
+
+mongoose.connection
+    .once('open', () => console.log('MongoDB is Connected in server.js'))
+    .on('error', (error) => {
+        console.log("The Error is", error)
+    });
