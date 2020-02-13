@@ -23,30 +23,34 @@ router.get('/', function (req, res, next) {
 
 
 
-  router.get('/scrape', function (req, res) {
-
+  
   axios.get("https://hiphopdx.com/").then(function (response) {
 
     const $ = cherrio.load(response.data)
     
   
          $("a.single").each(function (i, element) {
-        
+        // console.log(element)
         const results = [];
 
         const title = $(element).children("h3").text()
         const excerpt = $(element).children("p.excerpt").text()
+        const link = $(element).attr('href')
        
+    //    console.log(link)
+
+
              results.push({
                 title: title ,
-                excerpt: excerpt  
+                excerpt: excerpt,
+                link: link
              })    
              
-         console.log(results)
+        
          db.Article.create(results)
          .then(function(dbArticle) {
            // View the added result in the console
-           console.log(dbArticle);
+        //    console.log(dbArticle);
          })
          .catch(function(err) {
            // If an error occurred, log it
@@ -54,9 +58,9 @@ router.get('/', function (req, res, next) {
          });
          
          });  
-     res.send("Scrape Complete");   
+    //  res.redirect("/");   
   })
-  });
+
 
   router.get("/articles", function(req, res) {
     // Grab every document in the Articles collection

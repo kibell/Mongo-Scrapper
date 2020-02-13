@@ -1,17 +1,19 @@
 // Grab the articles as a json
-Scrape()
-function Scrape () { 
-console.log("iiiii")
+$(document).ready(scrape());
+function scrape () { 
+
 $.getJSON("/articles", function(data) {
   // For each one
-  
+  // console.log(" yyerp" + data[1].title)
     // Display the apropos information on the page
   
       $("#articles").append(`<div class="mt-5 mb-5 Lobster text-center">
       <h1 style="font-size: 4em">Hip Hop Top Stories</h1>
       <div>`)
       for (let i = 0; i < data.length; i++) {
-
+            
+        
+        $("articles").empty();
           $('#articles').append(`
                   <div class="card articleCard mt-4 mb-4" >
                   <div class="card-header">
@@ -23,6 +25,7 @@ $.getJSON("/articles", function(data) {
                   <div class="card-body">
                   <h5 class="card-title">${data[i].title}</h5>
                   <p class="card-text">${data[i].excerpt}</p>
+                  <a href = "https://hiphopdx.com${data[i].link}"> View Article</a>
                 
                   </div>
                   </div>
