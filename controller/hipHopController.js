@@ -29,14 +29,14 @@ router.get('/', function (req, res, next) {
     const $ = cherrio.load(response.data)
     
   
-         $("a.single").each(function (i, element) {
+         $(".single").each(function (i, element) {
         // console.log(element)
         const results = [];
 
-        const title = $(element).children("h3").text()
-        const excerpt = $(element).children("p.excerpt").text()
-        const link = $(element).attr('href')
-       const image = $(element).children('img').attr('src')
+        let title = $(element).children("h3").text()
+        let excerpt = $(element).children("p.excerpt").text()
+        let link = $(element).attr('href')
+       let image = $(this).children('.post-image').attr('data-layzr')
        console.log(image)
 
 
