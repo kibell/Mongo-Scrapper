@@ -1,0 +1,25 @@
+
+
+
+.card-header {
+background-color: blue;
+
+}
+
+h1{
+    font-family: 'Montserrat Subrayada', sans-serif;
+
+}
+
+h5{
+    text-align: center;
+}
+
+.jumbotron {
+background-color: crimson;
+
+}
+
+.card-text{
+    text-align: center; 
+}

@@ -36,14 +36,16 @@ router.get('/', function (req, res, next) {
         const title = $(element).children("h3").text()
         const excerpt = $(element).children("p.excerpt").text()
         const link = $(element).attr('href')
-       
-    //    console.log(link)
+       const image = $(element).children('img').attr('src')
+       console.log(image)
 
 
              results.push({
                 title: title ,
                 excerpt: excerpt,
-                link: link
+                link: link,
+                image:image
+
              })    
              
         
